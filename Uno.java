@@ -1,7 +1,8 @@
 import java.util.*;
-public class Uno extends ConsoleProgram
-{
-    private ArrayList<Hand> players = new ArrayList<Hand>();
+import java.lang.*;
+class Main extends ConsoleProgram{
+  private ConsoleProgram consoleProgram = new ConsoleProgram();
+  private ArrayList<Hand> players = new ArrayList<Hand>();
     // Constants for colors
     private static final int RED = 1;
     private static final int YELLOW = 2;
@@ -39,16 +40,6 @@ public class Uno extends ConsoleProgram
     private void playerTurns(Deck deck, Card onTop, int player, int specialCardUsed){
         clearScreen();
         Card playedCard = onTop;
-        if(player > players.size() + 1){
-            player = 2;
-        }else if(player > players.size()){
-            player = 1;
-        }else if(player < 0){
-            player = players.size() - 1;
-        }else if(player < 1){
-            player = players.size();
-        }
-        Hand hand = players.get(player - 1);
         if(specialCardUsed == 12){
             reversedBool = !reversedBool;
             deck.addUsedCard(onTop);
@@ -58,6 +49,7 @@ public class Uno extends ConsoleProgram
             if(specialCardUsed != 0){
                 deck.addUsedCard(onTop);
             }
+            Hand hand = players.get(player - 1);
             if(specialCardUsed == WILD4){
                 hand.addCard(deck.deal());
                 hand.addCard(deck.deal());
@@ -110,25 +102,12 @@ public class Uno extends ConsoleProgram
                         playedCard = onTop;
                     }
                 }
-                if(hand.getHand().size() <= 0){
-                    System.out.println("Player " + player + " has won!");
-                }else{
-                    playerTurns(deck, playedCard, !reversedBool ? (player + 1 > players.size() ? 1 : player + 1) : (player - 1 < 1 ? players.size() : player - 1), specialCardPicked);
-                }
+                playerTurns(deck, playedCard, !reversedBool ? (player + 1 > players.size() ? 1 : player + 1) : (player - 1 < 1 ? players.size() : player - 1), specialCardPicked);
             }else{
-                if(hand.getHand().size() <= 0){
-                    System.out.println("Player " + player + " has won!");
-                }else{
-                    playerTurns(deck, playedCard, !reversedBool ? (player + 1 > players.size() ? 1 : player + 1) : (player - 1 < 1 ? players.size() : player - 1), 1);
-                }
+                playerTurns(deck, playedCard, !reversedBool ? (player + 1 > players.size() ? 1 : player + 1) : (player - 1 < 1 ? players.size() : player - 1), 1);
             }
         }
-        if(hand.getHand().size() <= 0){
-            System.out.println("Player " + player + " has won!");
-        }else{
-            playerTurns(deck, playedCard, !reversedBool ? (player + 1 > players.size() ? 1 : player + 1) : (player - 1 < 1 ? players.size() : player - 1), 1);
-            // playerTurns(deck, playedCard, !reversedBool ? (player + 2 == players.size() ? players.size() : player + 2 > players.size() + 1 ? 2 : player + 2) : (player == 1 ? players.size() : player - 2 < 0 ? players.size() - 1 : player - 2), 1);
-        }
+        playerTurns(deck, playedCard, !reversedBool ? (player + 2 > players.size() + 1 ? 2 : player + 2) : (player == 1 ? players.size() - 1 : player - 2 < 1 ? players.size() : player - 2), 1);
     }
 
     public void run()
