@@ -6,7 +6,7 @@ public class ConsoleProgram{
 
     public static void main(String[] args){
 
-        String mainClassName = "Main";
+        String mainClassName = "Uno";
 
         try{
             Class mainClass = Class.forName(mainClassName);
