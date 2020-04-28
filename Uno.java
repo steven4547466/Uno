@@ -16,7 +16,12 @@ class Uno extends ConsoleProgram{
     private static final int WILD = 13;
     private static final int WILD4 = 14;
 
+    // True if the order is reversed
     private boolean reversedBool = false;
+    /**
+     * Plays a round (starts a game)
+     * @param deck The deck of cards
+     */
     private void playRound(Deck deck){
         int numPlayers = 13;
         do{
@@ -37,6 +42,13 @@ class Uno extends ConsoleProgram{
         }while(start.getRank() >= SKIP);
         playerTurns(deck, start, 1, 0);
     }
+    /**
+     * Take a player turn
+     * @param deck The deck
+     * @param onTop The card on the top of the pile
+     * @param player The player's index
+     * @param specialCardUsed The constant of the special card that was used, if not used: 0.
+     */
     private void playerTurns(Deck deck, Card onTop, int player, int specialCardUsed){
         clearScreen();
         Card playedCard = onTop;
@@ -110,6 +122,9 @@ class Uno extends ConsoleProgram{
         playerTurns(deck, playedCard, !reversedBool ? (player + 2 > players.size() + 1 ? 2 : player + 2) : (player == 1 ? players.size() - 1 : player - 2 < 1 ? players.size() : player - 2), 1);
     }
 
+    /**
+     * Runs the program
+     */
     public void run()
     {
         Deck deck = new Deck();
@@ -118,6 +133,9 @@ class Uno extends ConsoleProgram{
         playRound(deck);
     }
     
+    /**
+     * Clears the screen by adding a lot of new lines
+     */
     public static void clearScreen() {  
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }  
