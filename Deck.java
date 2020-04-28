@@ -110,5 +110,4 @@ public class Deck{
     public void addUsedCard(Card c){
         usedCards.add(c);
     }
-    
 }
