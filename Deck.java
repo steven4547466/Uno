@@ -21,7 +21,7 @@ public class Deck{
     /**
      * Constructor for a new deck
      * Makes a new deck with cards 0-9 of all colors 
-     * twice and their speical cards with 8 wild cards,
+     * twice and their special cards with 8 wild cards,
      * 4 +4's and 4 normal
      */
     public Deck(){
