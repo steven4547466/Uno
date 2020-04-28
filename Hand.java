@@ -14,28 +14,54 @@ public class Hand{
     private static final int WILD = 13;
     private static final int WILD4 = 14;
     
+    // The cards in the hand
     private ArrayList<Card> cards;
     
+    /**
+     * Constructor for a new hand (player)
+     */
     public Hand(){
         cards = new ArrayList<Card>();
     }
     
+    /**
+     * Adds a card to the hand
+     * @param c The card to add
+     */
     public void addCard(Card c){
         cards.add(c);
     }
     
+    /**
+     * Gets a card at the index provided
+     * @param index The index to return with
+     * 1 added (from user input)
+     */
     public Card getCard(int index){
         return cards.get(index - 1);
     }
     
+    /**
+     * Uses a card
+     * @param index The index to use with
+     * 1 added (from user input)
+     */
     public void useCard(int index){
         cards.remove(index - 1);
     }
     
+    /**
+     * Gets the cards in thehand
+     * @return The cards in the hard     
+     */
     public ArrayList<Card> getHand(){
         return cards;
     }
     
+    /**
+     * Converts the hand to a string
+     * @return The hand as a string
+     */
     public String toString(){
         String handString = "";
         int i = 1;
@@ -48,6 +74,10 @@ public class Hand{
         return handString;
     }
     
+    /**
+     * Sorts the cards in the hand by
+     * color and rank
+     */
     public void sort(){
         ArrayList<Card> sortedCards = new ArrayList<Card>();
         ArrayList<Card> reds = new ArrayList<Card>();
