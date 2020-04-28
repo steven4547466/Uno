@@ -51,7 +51,7 @@ public class Hand{
     }
     
     /**
-     * Gets the cards in thehand
+     * Gets the cards in the hand
      * @return The cards in the hard     
      */
     public ArrayList<Card> getHand(){
