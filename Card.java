@@ -20,23 +20,44 @@ public class Card{
     
     private int color;
     private int rank;
+    /**
+     * Constructor for a card.
+     * @param c The card's color
+     * @param r The card's rank
+     */
     public Card(int c, int r){
         color = c;
         rank = r;
     }
     
+    /**
+     * Gets the card's color
+     * @return The color
+     */
     public int getColor(){
         return color;
     }
     
+    /**
+     * Gets the card's rank
+     * @return The rank
+     */
     public int getRank(){
         return rank;
     }
     
+    /**
+     * Sets the card's color
+     * @param c The color
+     */
     public void setColor(int c){
         color = c;
     }
     
+    /**
+     * Gets the card's real value
+     * @return The string value of the rank or special card number
+     */
     public String getValue(){
         if(rank < 10){
             return Integer.toString(rank);
@@ -44,6 +65,10 @@ public class Card{
         return specialCards[rank - 10];
     }
     
+    /**
+     * Converts the card to a string
+     * @return The string color and value
+     */
     public String toString(){
         return colors[color - 1] + " " + getValue();
     }
