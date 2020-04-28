@@ -20,6 +20,7 @@ public class Card{
     
     private int color;
     private int rank;
+    
     /**
      * Constructor for a card.
      * @param c The card's color
