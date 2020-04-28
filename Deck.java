@@ -14,9 +14,16 @@ public class Deck{
     private static final int WILD = 13;
     private static final int WILD4 = 14;
     
+    // The deck and the used cards of the deck
     private ArrayList<Card> deck;
     private ArrayList<Card> usedCards = new ArrayList<Card>();
     
+    /**
+     * Constructor for a new deck
+     * Makes a new deck with cards 0-9 of all colors 
+     * twice and their speical cards with 8 wild cards,
+     * 4 +4's and 4 normal
+     */
     public Deck(){
         deck = new ArrayList<Card>();
         for(int i = 0; i <= WILD4; i++){
@@ -41,6 +48,11 @@ public class Deck{
         }
     }
     
+    /**
+     * Deals the top card, shuffles discard
+     * if needed
+     * @return The card on the top of the deck
+     */
     public Card deal(){
         if(deck.size() <= 0){
             for(Card c: usedCards){
@@ -52,6 +64,9 @@ public class Deck{
         return deck.remove(0);
     }
     
+    /**
+     * Shuffles the deck
+     */
     public void shuffle(){
         for(int i = 0; i < deck.size(); i++)
         {
@@ -64,20 +79,34 @@ public class Deck{
         }
     }
     
+    /**
+     * Gets the entire deck
+     * @return The deck
+     */
     public ArrayList<Card> getCards(){
         return deck;
     }
     
+    /**
+     * Prints the entire deck
+     */
     public void print(){
         for(Card c: deck){
             System.out.println(c);
         }
     }
     
+    /**
+     * Gets the top card without shuffling
+     * @return The top card
+     */
     public Card topCard(){
         return deck.remove(0);
     }
     
+    /**
+     * Adds a card to the discard pile
+     */
     public void addUsedCard(Card c){
         usedCards.add(c);
     }
